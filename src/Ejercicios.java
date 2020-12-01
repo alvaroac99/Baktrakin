@@ -27,17 +27,17 @@ public class Ejercicios {
         return suma;
     }
     //arbol de busqueda binario
-    public static void SumaSubconjuntos(int[] vector, int num, int[] sol, int nivel, Booleano exito) {
+    public static void SumaSubconjuntos(int[] vector, int num, int[] sol, int nivel, Boolean exito) {
         if (nivel == vector.length) {
-            if (suma(sol, vector, nivel )== num) exito.setValor(true);
+            if (suma(sol, vector, nivel )== num) exito=true;
         } else {
             int c = 0; //candidatos, si 0 no añadir 1 añadir
-            while (!exito.getValor() && (c < 2)) {
+            while (!exito && (c < 2)) {
                 if (c == 0 || suma(sol, vector, nivel) + vector[nivel] <= num) {
                     sol[nivel] = c;
                     nivel = nivel + 1;
                     SumaSubconjuntos(vector, num, sol, nivel, exito);
-                    if (!exito.getValor()) {
+                    if (!exito) {
                         nivel = nivel - 1;
                         sol[nivel] = 0;
                     }
